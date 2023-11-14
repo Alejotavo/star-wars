@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import Spinner from "./components/Spinner/Spinner";
 import "./App.css";
+import { Data, Character } from "./Models/star-wars";
+import CharacterList from "./components/Characters-list/Character-list";
 
-interface Data {
-  results: Character[];
-}
-
-interface Character {
-  name: string;
-}
+//import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 function App() {
   const [data, setData] = useState<Data>({ results: [] });
@@ -47,8 +43,8 @@ function App() {
       <ul>
         {isLoading && <Spinner />}
         {filteredData &&
-          filteredData.map((item: Character, index: number) => (
-            <li key={index}>{item.name}</li>
+          filteredData.map((props, index) => (
+            <CharacterList key={index} {...props} />
           ))}
       </ul>
     </div>
