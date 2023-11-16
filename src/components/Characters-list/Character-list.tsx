@@ -1,8 +1,4 @@
-import { Character } from "./../../Models/star-wars";
-
-const CharacterList = (props: Character) => {
-  const { name } = props;
-
+const CharacterList = ({ name }: { name: string }) => {
   return <li>{name}</li>;
 };
 
