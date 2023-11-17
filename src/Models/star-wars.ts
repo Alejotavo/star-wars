@@ -4,6 +4,6 @@ export interface Data {
   
  export interface Character {
     name: string;
-    url: string;
+    gender: string;
   }
   

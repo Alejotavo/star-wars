@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import CharacterList from "../Characters-list/Character-list";
+import HeaderFilter from "../Header-filter/Header-filter";
 import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
+import "./Character-wrapper.scss";
 
 import { fetchData } from "./../../Services/Services";
 
@@ -34,16 +36,13 @@ const CharacterWrapper = () => {
 
   return (
     <>
-      <input
-        onChange={(e) => setSearchFilter(e.target.value.toLowerCase())}
-        type="text"
-        placeholder="Search by Name"
-      />
-      <ul>
+      <HeaderFilter setSearchFilter={setSearchFilter} />
+
+      <ul className="wrapper">
         {isLoading && <Spinner />}
         {filteredData &&
           filteredData.map((item, index) => (
-            <CharacterList key={index} name={item.name} />
+            <CharacterList key={index} name={item.name} gender={item.gender} />
           ))}
       </ul>
     </>
