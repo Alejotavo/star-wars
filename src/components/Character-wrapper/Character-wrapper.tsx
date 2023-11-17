@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { SetStateAction, useEffect, useState } from "react";
 import CharacterList from "../Characters-list/Character-list";
 import HeaderFilter from "../Header-filter/Header-filter";
 import { Character, Data } from "./../../Models/star-wars";
@@ -12,6 +12,13 @@ const CharacterWrapper = () => {
   const [filteredData, setFilteredData] = useState<Character[]>([]);
   const [searchFilter, setSearchFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  const [dropdownFilter, setDropdownFilter] = useState("");
+
+  const handleFilterChange = (gender: SetStateAction<string>) => {
+    setDropdownFilter(gender);
+    console.log("Dropdown value", dropdownFilter);
+  };
 
   useEffect(() => {
     setIsLoading(true);
@@ -27,16 +34,31 @@ const CharacterWrapper = () => {
   }, []);
 
   useEffect(() => {
-    setFilteredData(
-      data.results.filter((result) =>
-        result.name.toLowerCase().includes(searchFilter)
-      )
-    );
-  }, [data, searchFilter]);
+    let filteredResults = data.results;
+
+    // Aplicar filtro por nombre si searchFilter está definido
+    if (searchFilter) {
+      filteredResults = filteredResults.filter((result) =>
+        result.name.toLowerCase().includes(searchFilter.toLowerCase())
+      );
+    }
+
+    // Aplicar filtro por género si dropdownFilter está definido
+    if (dropdownFilter && dropdownFilter !== "all") {
+      filteredResults = filteredResults.filter(
+        (result) => result.gender.toLowerCase() === dropdownFilter.toLowerCase()
+      );
+    }
+
+    setFilteredData(filteredResults);
+  }, [data, searchFilter, dropdownFilter]);
 
   return (
     <>
-      <HeaderFilter setSearchFilter={setSearchFilter} />
+      <HeaderFilter
+        setSearchFilter={setSearchFilter}
+        handleFilterChange={handleFilterChange}
+      />
 
       <ul className="wrapper">
         {isLoading && <Spinner />}
