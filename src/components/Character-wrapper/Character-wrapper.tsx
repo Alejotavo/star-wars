@@ -59,9 +59,8 @@ const CharacterWrapper = () => {
   return (
     <>
       {isLoading && <Spinner />}
-
-      <Row>
-        {!isLoading && (
+      {!isLoading && (
+        <Row>
           <Col>
             <HeaderFilter
               setSearchFilter={setSearchFilter}
@@ -87,8 +86,8 @@ const CharacterWrapper = () => {
               </tbody>
             </Table>
           </Col>
-        )}
-      </Row>
+        </Row>
+      )}
     </>
   );
 };
