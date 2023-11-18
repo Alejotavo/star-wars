@@ -57,33 +57,39 @@ const CharacterWrapper = () => {
   }, [data, searchFilter, dropdownFilter]);
 
   return (
-    <Row>
-      <Col>
-        <HeaderFilter
-          setSearchFilter={setSearchFilter}
-          handleFilterChange={handleFilterChange}
-        />
-        {isLoading && <Spinner />}
-        <Table striped size="sm">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Gender</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filteredData &&
-              filteredData.map((item, index) => (
-                <CharacterList
-                  key={index}
-                  name={item.name}
-                  gender={item.gender}
-                />
-              ))}
-          </tbody>
-        </Table>
-      </Col>
-    </Row>
+    <>
+      {isLoading && <Spinner />}
+
+      <Row>
+        {!isLoading && (
+          <Col>
+            <HeaderFilter
+              setSearchFilter={setSearchFilter}
+              handleFilterChange={handleFilterChange}
+            />
+
+            <Table striped size="sm">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Gender</th>
+                </tr>
+              </thead>
+              <tbody>
+                {filteredData &&
+                  filteredData.map((item, index) => (
+                    <CharacterList
+                      key={index}
+                      name={item.name}
+                      gender={item.gender}
+                    />
+                  ))}
+              </tbody>
+            </Table>
+          </Col>
+        )}
+      </Row>
+    </>
   );
 };
 

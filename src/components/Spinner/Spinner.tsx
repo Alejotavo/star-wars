@@ -1,8 +1,8 @@
-import * as React from "react";
+import "./Spinner.scss";
 
 const Spinner = () => {
   return (
-    <div>
+    <div className="spinner-wrapper">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         x="0px"
