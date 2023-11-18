@@ -4,8 +4,11 @@ import HeaderFilter from "../Header-filter/Header-filter";
 import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
 import "./Character-wrapper.scss";
+import Table from "react-bootstrap/Table";
 
 import { fetchData } from "./../../Services/Services";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
 
 const CharacterWrapper = () => {
   const [data, setData] = useState<Data>({ results: [] });
@@ -54,20 +57,33 @@ const CharacterWrapper = () => {
   }, [data, searchFilter, dropdownFilter]);
 
   return (
-    <>
-      <HeaderFilter
-        setSearchFilter={setSearchFilter}
-        handleFilterChange={handleFilterChange}
-      />
-
-      <ul className="wrapper">
+    <Row>
+      <Col>
+        <HeaderFilter
+          setSearchFilter={setSearchFilter}
+          handleFilterChange={handleFilterChange}
+        />
         {isLoading && <Spinner />}
-        {filteredData &&
-          filteredData.map((item, index) => (
-            <CharacterList key={index} name={item.name} gender={item.gender} />
-          ))}
-      </ul>
-    </>
+        <Table striped size="sm">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Gender</th>
+            </tr>
+          </thead>
+          <tbody>
+            {filteredData &&
+              filteredData.map((item, index) => (
+                <CharacterList
+                  key={index}
+                  name={item.name}
+                  gender={item.gender}
+                />
+              ))}
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
   );
 };
 
