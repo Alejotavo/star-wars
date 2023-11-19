@@ -1,6 +1,7 @@
 import { SetStateAction, useEffect, useState } from "react";
 import CharacterList from "../Characters-list/Character-list";
 import HeaderFilter from "../Header-filter/Header-filter";
+import LayOutHeader from "../LayOut-header/LayOut-header";
 import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
 import "./Character-wrapper.scss";
@@ -60,33 +61,36 @@ const CharacterWrapper = () => {
     <>
       {isLoading && <Spinner />}
       {!isLoading && (
-        <Row>
-          <Col>
-            <HeaderFilter
-              setSearchFilter={setSearchFilter}
-              handleFilterChange={handleFilterChange}
-            />
+        <>
+          <LayOutHeader />
+          <Row>
+            <Col>
+              <HeaderFilter
+                setSearchFilter={setSearchFilter}
+                handleFilterChange={handleFilterChange}
+              />
 
-            <Table striped size="sm">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Gender</th>
-                </tr>
-              </thead>
-              <tbody>
-                {filteredData &&
-                  filteredData.map((item, index) => (
-                    <CharacterList
-                      key={index}
-                      name={item.name}
-                      gender={item.gender}
-                    />
-                  ))}
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
+              <Table striped size="sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData &&
+                    filteredData.map((item, index) => (
+                      <CharacterList
+                        key={index}
+                        name={item.name}
+                        gender={item.gender}
+                      />
+                    ))}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
+        </>
       )}
     </>
   );
