@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
+import { drawCanvas } from "./Canvas";
 
 const Game = () => {
+  useEffect(() => {
+    drawCanvas("myCanvas");
+  }, []);
+
   const canvasStyle = {
     backgroundColor: "#e6e6e6",
   };
@@ -8,7 +14,12 @@ const Game = () => {
     <div>
       <Row>
         <Col className="my-3 mx-3">
-          <canvas width={400} height={200} style={canvasStyle}></canvas>
+          <canvas
+            id="myCanvas"
+            width={400}
+            height={200}
+            style={canvasStyle}
+          ></canvas>
         </Col>
       </Row>
     </div>
