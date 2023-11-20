@@ -9,11 +9,13 @@ export const drawCanvas = () => {
       let squareX = 50;
       let squareY = 50;
       const squareSize = 50;
+      const canvasWidth = canvas.width;
+      const canvasHeight = canvas.height;
       
       // Dibujar el cuadrado en el canvas
       function drawSquare() {
         if (ctx) {
-          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.clearRect(0, 0, canvasWidth, canvasHeight);
           ctx.fillStyle = 'blue';
           ctx.fillRect(squareX, squareY, squareSize, squareSize);
         }
@@ -24,11 +26,15 @@ export const drawCanvas = () => {
       
         switch (event.keyCode) {
           case 37: // Flecha izquierda
+          if (squareX - speed >= 0) {
             squareX -= speed;
+          }
             break;
           case 39: // Flecha derecha
+          if (squareX + squareSize + speed <= canvasWidth) {
             squareX += speed;
-            break;
+          }
+          break;
         }
       
         drawSquare(); // Volver a dibujar el cuadrado después de cambiar las coordenadas
@@ -37,8 +43,8 @@ export const drawCanvas = () => {
       document.addEventListener('keydown', moveSquare);
 
 
-// Dibujar el cuadrado inicial
-drawSquare();
+      // Dibujar el cuadrado inicial
+      drawSquare();
 
 
 
