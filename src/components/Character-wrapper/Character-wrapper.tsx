@@ -6,6 +6,7 @@ import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
 import "./Character-wrapper.scss";
 import Table from "react-bootstrap/Table";
+import Card from "react-bootstrap/Card";
 
 import { fetchData } from "./../../Services/Services";
 import Row from "react-bootstrap/esm/Row";
@@ -63,33 +64,37 @@ const CharacterWrapper = () => {
       {!isLoading && (
         <>
           <LayOutHeader />
-          <Row>
-            <Col>
-              <HeaderFilter
-                setSearchFilter={setSearchFilter}
-                handleFilterChange={handleFilterChange}
-              />
+          <Card>
+            <Card.Body>
+              <Row>
+                <Col>
+                  <HeaderFilter
+                    setSearchFilter={setSearchFilter}
+                    handleFilterChange={handleFilterChange}
+                  />
 
-              <Table striped size="sm">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Gender</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData &&
-                    filteredData.map((item, index) => (
-                      <CharacterList
-                        key={index}
-                        name={item.name}
-                        gender={item.gender}
-                      />
-                    ))}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+                  <Table striped size="sm">
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Gender</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredData &&
+                        filteredData.map((item, index) => (
+                          <CharacterList
+                            key={index}
+                            name={item.name}
+                            gender={item.gender}
+                          />
+                        ))}
+                    </tbody>
+                  </Table>
+                </Col>
+              </Row>
+            </Card.Body>
+          </Card>
         </>
       )}
     </>
