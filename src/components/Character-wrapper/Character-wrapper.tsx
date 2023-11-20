@@ -7,8 +7,6 @@ import "./Character-wrapper.scss";
 import Table from "react-bootstrap/Table";
 
 import { fetchData } from "./../../Services/Services";
-import Row from "react-bootstrap/esm/Row";
-import Col from "react-bootstrap/esm/Col";
 
 const CharacterWrapper = () => {
   const [data, setData] = useState<Data>({ results: [] });
@@ -61,33 +59,29 @@ const CharacterWrapper = () => {
       {isLoading && <Spinner />}
       {!isLoading && (
         <>
-          <Row>
-            <Col className="my-3 mx-3">
-              <HeaderFilter
-                setSearchFilter={setSearchFilter}
-                handleFilterChange={handleFilterChange}
-              />
+          <HeaderFilter
+            setSearchFilter={setSearchFilter}
+            handleFilterChange={handleFilterChange}
+          />
 
-              <Table striped size="sm">
-                <thead>
-                  <tr>
-                    <th>Name</th>
-                    <th>Gender</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredData &&
-                    filteredData.map((item, index) => (
-                      <CharacterList
-                        key={index}
-                        name={item.name}
-                        gender={item.gender}
-                      />
-                    ))}
-                </tbody>
-              </Table>
-            </Col>
-          </Row>
+          <Table striped size="sm">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Gender</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filteredData &&
+                filteredData.map((item, index) => (
+                  <CharacterList
+                    key={index}
+                    name={item.name}
+                    gender={item.gender}
+                  />
+                ))}
+            </tbody>
+          </Table>
         </>
       )}
     </>

@@ -7,7 +7,7 @@ import Navbar from "react-bootstrap/Navbar";
 const LayOutHeader = () => {
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" className="mb-3">
         <Container fluid>
           <Navbar.Brand href="#">
             <LogoHeader />

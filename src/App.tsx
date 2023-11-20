@@ -4,16 +4,26 @@ import LayOutHeader from "../src/components/LayOut-header/LayOut-header";
 import Game from "./components/Game/Game";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+import Container from "react-bootstrap/esm/Container";
+
 function App() {
   return (
     <div className="App">
-      <Router>
-        <LayOutHeader />
-        <Routes>
-          <Route path="/" element={<CharacterWrapper />} />
-          <Route path="/game" element={<Game />} />
-        </Routes>
-      </Router>
+      <LayOutHeader />
+      <Container fluid>
+        <Row>
+          <Col>
+            <Router>
+              <Routes>
+                <Route path="/" element={<CharacterWrapper />} />
+                <Route path="/game" element={<Game />} />
+              </Routes>
+            </Router>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }
