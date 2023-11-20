@@ -1,7 +1,6 @@
 import { SetStateAction, useEffect, useState } from "react";
 import CharacterList from "../Characters-list/Character-list";
 import HeaderFilter from "../Header-filter/Header-filter";
-import LayOutHeader from "../LayOut-header/LayOut-header";
 import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
 import "./Character-wrapper.scss";
@@ -63,7 +62,6 @@ const CharacterWrapper = () => {
       {isLoading && <Spinner />}
       {!isLoading && (
         <>
-          <LayOutHeader />
           <Card>
             <Card.Body>
               <Row>
