@@ -3,7 +3,7 @@ import { drawCanvas } from "./Canvas";
 
 const Game = () => {
   useEffect(() => {
-    drawCanvas("myCanvas");
+    drawCanvas();
   }, []);
 
   const canvasStyle = {
