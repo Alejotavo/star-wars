@@ -1,7 +1,16 @@
+import { Col, Row } from "react-bootstrap";
+
 const Game = () => {
+  const canvasStyle = {
+    backgroundColor: "#e6e6e6",
+  };
   return (
     <div>
-      <label>Star Wars Game!</label>
+      <Row>
+        <Col className="my-3 mx-3">
+          <canvas width={400} height={200} style={canvasStyle}></canvas>
+        </Col>
+      </Row>
     </div>
   );
 };

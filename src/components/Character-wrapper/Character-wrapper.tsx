@@ -5,7 +5,6 @@ import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
 import "./Character-wrapper.scss";
 import Table from "react-bootstrap/Table";
-import Card from "react-bootstrap/Card";
 
 import { fetchData } from "./../../Services/Services";
 import Row from "react-bootstrap/esm/Row";
@@ -62,37 +61,33 @@ const CharacterWrapper = () => {
       {isLoading && <Spinner />}
       {!isLoading && (
         <>
-          <Card>
-            <Card.Body>
-              <Row>
-                <Col>
-                  <HeaderFilter
-                    setSearchFilter={setSearchFilter}
-                    handleFilterChange={handleFilterChange}
-                  />
+          <Row>
+            <Col className="my-3 mx-3">
+              <HeaderFilter
+                setSearchFilter={setSearchFilter}
+                handleFilterChange={handleFilterChange}
+              />
 
-                  <Table striped size="sm">
-                    <thead>
-                      <tr>
-                        <th>Name</th>
-                        <th>Gender</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {filteredData &&
-                        filteredData.map((item, index) => (
-                          <CharacterList
-                            key={index}
-                            name={item.name}
-                            gender={item.gender}
-                          />
-                        ))}
-                    </tbody>
-                  </Table>
-                </Col>
-              </Row>
-            </Card.Body>
-          </Card>
+              <Table striped size="sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData &&
+                    filteredData.map((item, index) => (
+                      <CharacterList
+                        key={index}
+                        name={item.name}
+                        gender={item.gender}
+                      />
+                    ))}
+                </tbody>
+              </Table>
+            </Col>
+          </Row>
         </>
       )}
     </>
