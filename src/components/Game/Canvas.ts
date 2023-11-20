@@ -6,11 +6,13 @@ export const drawCanvas = () => {
     if (canvas && canvas instanceof HTMLCanvasElement) {
       const ctx = canvas.getContext('2d');
   
-      let squareX = 50;
-      let squareY = 50;
+     
       const squareSize = 50;
       const canvasWidth = canvas.width;
       const canvasHeight = canvas.height;
+
+      let squareX = (canvasWidth - squareSize) / 2;
+    let squareY = (canvasHeight - squareSize) / 2;
       
       // Dibujar el cuadrado en el canvas
       function drawSquare() {
