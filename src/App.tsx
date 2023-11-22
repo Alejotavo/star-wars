@@ -18,7 +18,7 @@ function App() {
           <Col>
             <Router>
               <Routes>
-                <Route path="/" element={<CharacterWrapper />} />
+                <Route path="*" element={<CharacterWrapper />} />
                 <Route path="/game" element={<Game />} />
                 <Route path="/character" element={<CharacterDetails />} />
               </Routes>
