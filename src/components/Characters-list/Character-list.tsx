@@ -11,7 +11,7 @@ const CharacterList = (props: { index: number; character: Character }) => {
           </Link>
         </td>
         <td>
-          <label>{props.character.eye_color}</label>
+          <label>{props.character.gender}</label>
         </td>
       </tr>
     </>
