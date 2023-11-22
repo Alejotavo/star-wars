@@ -74,11 +74,7 @@ const CharacterWrapper = () => {
             <tbody>
               {filteredData &&
                 filteredData.map((item, index) => (
-                  <CharacterList
-                    key={index}
-                    name={item.name}
-                    gender={item.gender}
-                  />
+                  <CharacterList key={index} index={index} character={item} />
                 ))}
             </tbody>
           </Table>

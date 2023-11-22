@@ -20,7 +20,7 @@ function App() {
               <Routes>
                 <Route path="*" element={<CharacterWrapper />} />
                 <Route path="/game" element={<Game />} />
-                <Route path="/character" element={<CharacterDetails />} />
+                <Route path="/character/:id" element={<CharacterDetails />} />
               </Routes>
             </Router>
           </Col>

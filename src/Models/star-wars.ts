@@ -5,5 +5,6 @@ export interface Data {
  export interface Character {
     name: string;
     gender: string;
+    eye_color: string
   }
   

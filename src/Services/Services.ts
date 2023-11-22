@@ -7,7 +7,7 @@ fetch("https://swapi.dev/api/people/")
 
 }); */
 
-const apiUrl = "https://swapi.dev/api/people/";
+const apiUrl = "https://swapi.dev/api/people";
 
 export async function fetchData(): Promise<any> {
     try {
