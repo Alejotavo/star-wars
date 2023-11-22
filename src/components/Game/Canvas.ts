@@ -13,6 +13,9 @@ export const drawCanvas = () => {
 
       let squareX = (canvasWidth - squareSize) / 2;
     let squareY = (canvasHeight - squareSize) / 2;
+
+    let speedX = 0;
+    let speedY = 0;
       
       // Dibujar el cuadrado en el canvas
       function drawSquare() {
@@ -23,30 +26,53 @@ export const drawCanvas = () => {
         }
       }
 
-      function moveSquare(event: { keyCode: any; }) {
-        const speed = 5; // Velocidad de movimiento
+      function moveSquare() {
+        squareX += speedX;
+        squareY += speedY;
       
-        switch (event.keyCode) {
-          case 37: // Flecha izquierda
-          if (squareX - speed >= 0) {
-            squareX -= speed;
-          }
-            break;
-          case 39: // Flecha derecha
-          if (squareX + squareSize + speed <= canvasWidth) {
-            squareX += speed;
-          }
-          break;
+        if (squareX < 0) {
+          squareX = 0;
+        } else if (squareX + squareSize > canvasWidth) {
+          squareX = canvasWidth - squareSize;
+        }
+  
+        if (squareY < 0) {
+          squareY = 0;
+        } else if (squareY + squareSize > canvasHeight) {
+          squareY = canvasHeight - squareSize;
         }
       
         drawSquare(); // Volver a dibujar el cuadrado después de cambiar las coordenadas
+        requestAnimationFrame(moveSquare);
       }
 
-      document.addEventListener('keydown', moveSquare);
+      document.addEventListener('keydown', (event) => {
+        switch (event.keyCode) {
+          case 37: // Flecha izquierda
+            speedX = -5;
+            speedY = 0;
+            break;
+          case 38: // Flecha arriba
+            speedX = 0;
+            speedY = -5;
+            break;
+          case 39: // Flecha derecha
+            speedX = 5;
+            speedY = 0;
+            break;
+          case 40: // Flecha abajo
+            speedX = 0;
+            speedY = 5;
+            break;
+        }
+      });
 
+      document.addEventListener('keyup', () => {
+        speedX = 0;
+        speedY = 0;
+      });
 
-      // Dibujar el cuadrado inicial
-      drawSquare();
+      moveSquare(); // Iniciar el movimiento
 
 
 
