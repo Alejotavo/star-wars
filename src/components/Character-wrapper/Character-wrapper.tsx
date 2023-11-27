@@ -56,7 +56,6 @@ const CharacterWrapper = () => {
     setFilteredData(filteredResults);
   }, [data, searchFilter, dropdownFilter]);
 
-  console.log("errrorrr", error?.message);
   return (
     <>
       {!error ? (
