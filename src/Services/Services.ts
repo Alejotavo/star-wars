@@ -1,16 +1,6 @@
-/* 
-fetch("https://swapi.dev/api/people/")
-.then((response) => response.json())
-.then((apiData) => console.log(apiData))
-.catch((e) => console.log(e.message))
-.finally(() => {
-
-}); */
-
-
 
 //List of All Characters
-const apiUrl = "https://swapi.dev/api/peple";
+const apiUrl = "https://swapi.dev/api/people";
 
 export async function fetchData(): Promise<any> {
     try {
