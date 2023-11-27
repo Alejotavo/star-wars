@@ -32,7 +32,7 @@ const CharacterDetails = () => {
       <h1>{dataCharacter?.name}</h1>
       <p>{dataCharacter?.eye_color}</p>
       <label>Films:</label>
-      {dataCharacter?.films.map((film: string, index: number) => {
+      {dataCharacter?.films?.map((film, index: number) => {
         return <div key={index}>{film}</div>;
       })}
       <Link to={"/"}>back</Link>

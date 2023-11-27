@@ -3,8 +3,12 @@ export interface Data {
   }
   
  export interface Character {
-    name: string;
-    gender: string;
-    eye_color: string
+    name: string,
+    gender: string,
+    eye_color: string,
+    films: string[]
   }
+  
+
+
   
