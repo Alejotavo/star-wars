@@ -7,13 +7,14 @@ import "./Character-wrapper.scss";
 import Table from "react-bootstrap/Table";
 
 import { fetchData } from "./../../Services/Services";
+import Alert from "../Alert/alert";
 
 const CharacterWrapper = () => {
   const [data, setData] = useState<Data>({ results: [] });
   const [filteredData, setFilteredData] = useState<Character[]>([]);
   const [searchFilter, setSearchFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-
+  const [error, setError] = useState<Error | null>(null);
   const [dropdownFilter, setDropdownFilter] = useState("");
 
   const handleFilterChange = (gender: SetStateAction<string>) => {
@@ -30,6 +31,7 @@ const CharacterWrapper = () => {
         setIsLoading(false);
       })
       .catch((error) => {
+        setError(error);
         console.error("Error fetching data:", error);
       });
   }, []);
@@ -54,31 +56,42 @@ const CharacterWrapper = () => {
     setFilteredData(filteredResults);
   }, [data, searchFilter, dropdownFilter]);
 
+  console.log("errrorrr", error?.message);
   return (
     <>
-      {isLoading && <Spinner />}
-      {!isLoading && (
+      {!error ? (
         <>
-          <HeaderFilter
-            setSearchFilter={setSearchFilter}
-            handleFilterChange={handleFilterChange}
-          />
-
-          <Table striped size="sm">
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Gender</th>
-              </tr>
-            </thead>
-            <tbody>
-              {filteredData &&
-                filteredData.map((item, index) => (
-                  <CharacterList key={index} index={index} character={item} />
-                ))}
-            </tbody>
-          </Table>
+          {!isLoading ? (
+            <>
+              <HeaderFilter
+                setSearchFilter={setSearchFilter}
+                handleFilterChange={handleFilterChange}
+              />
+              <Table striped size="sm">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Gender</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {filteredData &&
+                    filteredData.map((item, index) => (
+                      <CharacterList
+                        key={index}
+                        index={index}
+                        character={item}
+                      />
+                    ))}
+                </tbody>
+              </Table>
+            </>
+          ) : (
+            <Spinner />
+          )}
         </>
+      ) : (
+        <Alert message={error.message}></Alert>
       )}
     </>
   );

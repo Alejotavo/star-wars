@@ -7,7 +7,10 @@ fetch("https://swapi.dev/api/people/")
 
 }); */
 
-const apiUrl = "https://swapi.dev/api/people";
+
+
+//List of All Characters
+const apiUrl = "https://swapi.dev/api/peple";
 
 export async function fetchData(): Promise<any> {
     try {
@@ -27,6 +30,7 @@ export async function fetchData(): Promise<any> {
 
 
 
+//Service to fetch a specific Character
 export async function fetchDataCharacter(id: string): Promise<any> {
     try {
       const response = await fetch(apiUrl + '/' + id);
