@@ -1,10 +1,10 @@
 
 //List of All Characters
-const apiUrl = "https://swapi.dev/api/people";
+const apiUrl = "https://swapi.py4e.com/api/people";
 
-export async function fetchData(): Promise<any> {
+export async function fetchData(page: number = 1): Promise<any> {
     try {
-      const response = await fetch(apiUrl);
+      const response = await fetch(apiUrl + '?page=' + page);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);

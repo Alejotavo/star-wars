@@ -6,7 +6,8 @@ export interface Data {
     name: string,
     gender: string,
     eye_color: string,
-    films: string[]
+    films: string[],
+    url: string
   }
   
 

@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { Character } from "../../Models/star-wars";
 
-const CharacterList = (props: { index: number; character: Character }) => {
+const CharacterList = (props: { character: Character }) => {
+  const getIdFromCharacterUrl = (url: string) => {
+    let splitted = url.split("/");
+    console.log("calculating ID for " + url);
+    return splitted[splitted.length - 2];
+  };
   return (
     <>
       <tr>
         <td>
-          <Link to={"/character/" + (props.index + 1)}>
+          <Link to={"/character/" + getIdFromCharacterUrl(props.character.url)}>
             {props.character.name}
           </Link>
         </td>
