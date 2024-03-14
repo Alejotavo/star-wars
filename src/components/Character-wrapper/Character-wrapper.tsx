@@ -9,13 +9,16 @@ import Table from "react-bootstrap/Table";
 import { fetchData } from "./../../Services/Services";
 import Alert from "../Alert/alert";
 
+import Pagination from "../Characters-list/Pagination/Pagination";
+
 const CharacterWrapper = () => {
-  const [data, setData] = useState<Data>({ results: [] });
+  const [data, setData] = useState<Data>({ results: [], count: 0 });
   const [filteredData, setFilteredData] = useState<Character[]>([]);
   const [searchFilter, setSearchFilter] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const [dropdownFilter, setDropdownFilter] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
 
   const handleFilterChange = (gender: SetStateAction<string>) => {
     setDropdownFilter(gender);
@@ -24,7 +27,7 @@ const CharacterWrapper = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchData()
+    fetchData(currentPage)
       .then((response: Data) => {
         console.log("Fetched data:", response);
         setData(response);
@@ -34,7 +37,7 @@ const CharacterWrapper = () => {
         setError(error);
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [currentPage]);
 
   useEffect(() => {
     let filteredResults = data.results;
@@ -80,6 +83,14 @@ const CharacterWrapper = () => {
                     ))}
                 </tbody>
               </Table>
+              <Pagination
+                totalItems={data.count}
+                itemsPerPage={10}
+                currentPage={currentPage}
+                onPageChange={(pageNumber) => {
+                  setCurrentPage(pageNumber);
+                }}
+              />
             </>
           ) : (
             <Spinner />

@@ -1,5 +1,6 @@
 export interface Data {
     results: Character[];
+    count: number;
   }
   
  export interface Character {
