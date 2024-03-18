@@ -4,7 +4,6 @@ import { Character } from "../../Models/star-wars";
 const CharacterList = (props: { character: Character }) => {
   const getIdFromCharacterUrl = (url: string) => {
     let splitted = url.split("/");
-    console.log("calculating ID for " + url);
     return splitted[splitted.length - 2];
   };
   return (

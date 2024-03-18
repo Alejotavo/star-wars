@@ -26,8 +26,6 @@ const CharacterDetails = () => {
       });
   }, []);
 
-  console.log(dataCharacter);
-
   const [showModal, setShowModal] = useState(false);
 
   const handleModalOpen = () => setShowModal(true);
