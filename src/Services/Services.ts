@@ -59,3 +59,22 @@ export async function fetchDataFilms(): Promise<any> {
       throw error;
     }
   }
+
+    //List of All STARSHIPS
+const apiUrlStarships = "https://swapi.dev/api/starships";
+
+export async function fetchDataStarships(): Promise<any> {
+    try {
+      const response = await fetch(apiUrlStarships);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
