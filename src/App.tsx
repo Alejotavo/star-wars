@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Container from "react-bootstrap/esm/Container";
-import CharacterDetails from "./components/Characters-list/Character-details/Character-details";
+import CharacterDetails from "./components/Character-wrapper/Characters-list/Character-details/Character-details";
 
 function App() {
   return (

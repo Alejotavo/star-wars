@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Character } from "../../Models/star-wars";
+import { Character } from "../../../Models/star-wars";
 
 const CharacterList = (props: { character: Character }) => {
   const getIdFromCharacterUrl = (url: string) => {

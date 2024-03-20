@@ -1,5 +1,5 @@
 import { SetStateAction, useEffect, useState } from "react";
-import CharacterList from "../Characters-list/Character-list";
+import CharacterList from "./Characters-list/Character-list";
 import HeaderFilter from "../Header-filter/Header-filter";
 import { Character, Data } from "./../../Models/star-wars";
 import Spinner from "../Spinner/Spinner";
@@ -9,7 +9,7 @@ import Table from "react-bootstrap/Table";
 import { fetchData } from "./../../Services/Services";
 import Alert from "../Alert/alert";
 
-import Pagination from "../Characters-list/Pagination/Pagination";
+import Pagination from "./Characters-list/Pagination/Pagination";
 
 const CharacterWrapper = () => {
   const [data, setData] = useState<Data>({ results: [], count: 0 });
