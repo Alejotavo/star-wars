@@ -78,3 +78,25 @@ export async function fetchDataStarships(page: number = 1): Promise<any> {
       throw error;
     }
   }
+
+
+
+
+    //List of All VEHICLES
+    const apiUrlVehicles = "https://swapi.dev/api/vehicles";
+
+    export async function fetchDataVehicles(page: number = 1): Promise<any> {
+        try {
+          const response = await fetch(apiUrlVehicles + '?page=' + page);
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+      
+          const data = response.json();
+          return data;
+        } catch (error) {
+          console.error('Error fetching data:', error);
+          throw error;
+        }
+      }

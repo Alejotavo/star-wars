@@ -16,6 +16,7 @@ const LayOutHeader = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/films">Films</Nav.Link>
             <Nav.Link href="/starships">Starships</Nav.Link>
+            <Nav.Link href="/vehicles">Vehicles</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

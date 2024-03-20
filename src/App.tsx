@@ -3,6 +3,7 @@ import CharacterWrapper from "./components/Character-wrapper/Character-wrapper";
 import LayOutHeader from "../src/components/LayOut-header/LayOut-header";
 import Films from "./components/Films-wrapper/Films-wrapper";
 import Starships from "./components/Starships-wrapper/Starships-wrapper";
+import Vehicles from "./components/Vehicles-wrapper/Vehicles-wrapper";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Row from "react-bootstrap/esm/Row";
@@ -22,6 +23,7 @@ function App() {
                 <Route path="*" element={<CharacterWrapper />} />
                 <Route path="/films" element={<Films />} />
                 <Route path="/starships" element={<Starships />} />
+                <Route path="/vehicles" element={<Vehicles />} />
                 <Route path="/character/:id" element={<CharacterDetails />} />
               </Routes>
             </Router>
