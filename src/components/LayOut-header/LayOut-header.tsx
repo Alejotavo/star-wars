@@ -14,7 +14,7 @@ const LayOutHeader = () => {
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
-            <Nav.Link href="/game">Game</Nav.Link>
+            <Nav.Link href="/films">Films</Nav.Link>
           </Nav>
         </Container>
       </Navbar>
