@@ -9,7 +9,7 @@ import Table from "react-bootstrap/Table";
 import { fetchData } from "./../../Services/Services";
 import Alert from "../Alert/alert";
 
-import Pagination from "./Characters-list/Pagination/Pagination";
+import Pagination from "../Pagination/Pagination";
 
 const CharacterWrapper = () => {
   const [data, setData] = useState<Data>({ results: [], count: 0 });
