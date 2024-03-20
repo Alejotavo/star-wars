@@ -5,15 +5,17 @@ import { DataStarships } from "../../Models/starships";
 import Spinner from "../Spinner/Spinner";
 import Alert from "../Alert/alert";
 import { Table } from "react-bootstrap";
+import Pagination from "../Pagination/Pagination";
 
 const StarshipsWrapper = () => {
   const [data, setData] = useState<DataStarships>();
   const [error, setError] = useState<Error | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
     setIsLoading(true);
-    fetchDataStarships()
+    fetchDataStarships(currentPage)
       .then((response: DataStarships) => {
         console.log("Fetched data:", response);
         setData(response);
@@ -23,7 +25,7 @@ const StarshipsWrapper = () => {
         setError(error);
         console.error("Error fetching data:", error);
       });
-  }, []);
+  }, [currentPage]);
 
   console.log("lista de starship", data?.results);
 
@@ -34,19 +36,29 @@ const StarshipsWrapper = () => {
           {!isLoading ? (
             <>
               {data ? (
-                <Table striped size="sm">
-                  <thead>
-                    <tr>
-                      <th>Starships</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {data &&
-                      data?.results.map((item: any, index: number) => (
-                        <StarshipListItem starship={item} key={index} />
-                      ))}
-                  </tbody>
-                </Table>
+                <>
+                  <Table striped size="sm">
+                    <thead>
+                      <tr>
+                        <th>Starships</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data &&
+                        data?.results.map((item: any, index: number) => (
+                          <StarshipListItem starship={item} key={index} />
+                        ))}
+                    </tbody>
+                  </Table>
+                  <Pagination
+                    totalItems={data.count}
+                    itemsPerPage={10}
+                    currentPage={currentPage}
+                    onPageChange={(pageNumber) => {
+                      setCurrentPage(pageNumber);
+                    }}
+                  />
+                </>
               ) : (
                 <div>
                   <Spinner />

@@ -63,9 +63,9 @@ export async function fetchDataFilms(): Promise<any> {
     //List of All STARSHIPS
 const apiUrlStarships = "https://swapi.dev/api/starships";
 
-export async function fetchDataStarships(): Promise<any> {
+export async function fetchDataStarships(page: number = 1): Promise<any> {
     try {
-      const response = await fetch(apiUrlStarships);
+      const response = await fetch(apiUrlStarships + '?page=' + page);
 
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
