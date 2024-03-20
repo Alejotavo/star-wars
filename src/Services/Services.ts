@@ -37,3 +37,25 @@ export async function fetchDataCharacter(id: string): Promise<any> {
       throw error;
     }
   } 
+
+
+
+
+  //List of All FILMS
+const apiUrlFilms = "https://swapi.dev/api/films";
+
+export async function fetchDataFilms(): Promise<any> {
+    try {
+      const response = await fetch(apiUrlFilms);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }

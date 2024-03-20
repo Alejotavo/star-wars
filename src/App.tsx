@@ -1,7 +1,7 @@
 import "./App.css";
 import CharacterWrapper from "./components/Character-wrapper/Character-wrapper";
 import LayOutHeader from "../src/components/LayOut-header/LayOut-header";
-import Films from "./components/Films/Films";
+import Films from "./components/Films-wrapper/Films-wrapper";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Row from "react-bootstrap/esm/Row";
