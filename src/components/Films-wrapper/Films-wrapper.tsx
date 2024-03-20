@@ -2,18 +2,22 @@ import { useEffect, useState } from "react";
 import FilmListItem from "./Films-list/Film-list-item";
 import { fetchDataFilms } from "../../Services/Services";
 import { DataFilms } from "../../Models/films";
+import Spinner from "../Spinner/Spinner";
+import Alert from "../Alert/alert";
+import { Table } from "react-bootstrap";
 
 const FilmsWrapper = () => {
   const [data, setData] = useState<DataFilms>();
   const [error, setError] = useState<Error | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    //setIsLoading(true);
+    setIsLoading(true);
     fetchDataFilms()
       .then((response: DataFilms) => {
         console.log("Fetched data:", response);
         setData(response);
-        //setIsLoading(false);
+        setIsLoading(false);
       })
       .catch((error) => {
         setError(error);
@@ -25,18 +29,36 @@ const FilmsWrapper = () => {
 
   return (
     <>
-      hello
-      {data ? (
-        <table>
-          <tbody>
-            {data &&
-              data.results.map((item: any, index: number) => (
-                <FilmListItem movie={item} key={index} />
-              ))}
-          </tbody>
-        </table>
+      {!error ? (
+        <>
+          {!isLoading ? (
+            <>
+              {data ? (
+                <Table striped size="sm">
+                  <thead>
+                    <tr>
+                      <th>Title</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {data &&
+                      data.results.map((item: any, index: number) => (
+                        <FilmListItem movie={item} key={index} />
+                      ))}
+                  </tbody>
+                </Table>
+              ) : (
+                <div>
+                  <Spinner />
+                </div>
+              )}
+            </>
+          ) : (
+            <Spinner />
+          )}
+        </>
       ) : (
-        <div>errorrr</div>
+        <Alert message={error.message}></Alert>
       )}
     </>
   );
