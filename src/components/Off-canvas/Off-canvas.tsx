@@ -10,7 +10,7 @@ interface OffCanvasProps {
 const OffCanvas = (props: OffCanvasProps) => {
   return (
     <>
-      <Offcanvas show={props.show} onHide={props.onClose}>
+      <Offcanvas placement="end" show={props.show} onHide={props.onClose}>
         <Offcanvas.Header closeButton>
           <Offcanvas.Title>{props.title}</Offcanvas.Title>
         </Offcanvas.Header>
