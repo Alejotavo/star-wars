@@ -17,6 +17,8 @@ const LayOutHeader = () => {
             <Nav.Link href="/films">Films</Nav.Link>
             <Nav.Link href="/starships">Starships</Nav.Link>
             <Nav.Link href="/vehicles">Vehicles</Nav.Link>
+            <Nav.Link href="/species">Species</Nav.Link>
+            <Nav.Link href="/planets">Planets</Nav.Link>
           </Nav>
         </Container>
       </Navbar>

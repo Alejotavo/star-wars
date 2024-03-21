@@ -1,5 +1,5 @@
 export interface DataFilms {
-    results: Film[];
+    results: Film[]
   }
 
   export interface Film {

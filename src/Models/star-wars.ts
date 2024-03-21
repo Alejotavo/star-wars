@@ -1,6 +1,6 @@
 export interface Data {
-    results: Character[];
-    count: number;
+    results: Character[],
+    count: number
   }
   
  export interface Character {

@@ -1,6 +1,6 @@
 export interface DataVehicles {
-    results: Vehicle[];
-    count: number;
+    results: Vehicle[],
+    count: number
   }
 
   export interface Vehicle {
