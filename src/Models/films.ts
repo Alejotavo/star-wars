@@ -3,5 +3,7 @@ export interface DataFilms {
   }
 
   export interface Film {
-    title: string,
+    title: string;
+    url: string;
+    opening_crawl: string
   }

@@ -60,6 +60,26 @@ export async function fetchDataFilms(): Promise<any> {
     }
   }
 
+
+    //Specific FILM
+const apiUrlFilm = "https://swapi.dev/api/films";
+
+export async function fetchDataFilm(id: number): Promise<any> {
+    try {
+      const response = await fetch(apiUrlFilm + '/' + id);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
     //List of All STARSHIPS
 const apiUrlStarships = "https://swapi.dev/api/starships";
 
