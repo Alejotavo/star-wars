@@ -19,6 +19,7 @@ const FilmListItem = (props: FilmListItemProps) => {
       <tr>
         <td>
           <Button
+            variant="link"
             onClick={() => {
               props.setCurrentId(getIdFromFilmUrl(props.movie.url));
             }}

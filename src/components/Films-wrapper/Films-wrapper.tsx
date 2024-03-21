@@ -97,6 +97,7 @@ const FilmsWrapper = () => {
                   <OffCanvas
                     onClose={() => {
                       setShow(false);
+                      setFilteredData(data.results);
                     }}
                     show={show}
                     title={filmData?.title}
