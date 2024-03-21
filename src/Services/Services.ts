@@ -121,7 +121,7 @@ export async function fetchDataSpecies(page: number = 1): Promise<any> {
 }
 
 //List of All PLANETS
-const apiUrlPlanets = "https://swapi.dev/api/species";
+const apiUrlPlanets = "https://swapi.dev/api/planets";
 
 export async function fetchDataPlanets(page: number = 1): Promise<any> {
     try {
