@@ -5,5 +5,6 @@ export interface DataFilms {
   export interface Film {
     title: string;
     url: string;
+    director: string;
     opening_crawl: string
   }

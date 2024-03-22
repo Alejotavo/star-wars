@@ -8,9 +8,7 @@ interface FilmListItemProps {
 
 const FilmListItem = (props: FilmListItemProps) => {
   const getIdFromFilmUrl = (url: string) => {
-    console.log("URL", url);
     let splitted = url.split("/");
-    console.log("ID", splitted[splitted.length - 2]);
     return parseInt(splitted[splitted.length - 2]);
   };
 

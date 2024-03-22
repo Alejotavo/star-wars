@@ -7,6 +7,7 @@ import Alert from "../Alert/alert";
 import { Table } from "react-bootstrap";
 import Search from "../Search/Search";
 import OffCanvas from "../Off-canvas/Off-canvas";
+import FilmDetails from "./Film-details";
 
 const FilmsWrapper = () => {
   const [data, setData] = useState<DataFilms>({ results: [] });
@@ -64,8 +65,6 @@ const FilmsWrapper = () => {
     setFilteredData(filteredResults);
   }, [data, searchFilter]);
 
-  console.log("current ID", currentId);
-
   return (
     <>
       {!error ? (
@@ -101,7 +100,12 @@ const FilmsWrapper = () => {
                     }}
                     show={show}
                     title={filmData?.title}
-                    body={filmData?.opening_crawl}
+                    body={
+                      <FilmDetails
+                        title={filmData?.director}
+                        description={filmData?.opening_crawl}
+                      />
+                    }
                   />
                 </>
               ) : (
