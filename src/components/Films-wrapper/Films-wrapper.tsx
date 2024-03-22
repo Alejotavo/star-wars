@@ -78,6 +78,7 @@ const FilmsWrapper = () => {
                     <thead>
                       <tr>
                         <th>Title</th>
+                        <th>Views</th>
                       </tr>
                     </thead>
                     <tbody>
