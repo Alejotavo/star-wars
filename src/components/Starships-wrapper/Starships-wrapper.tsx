@@ -80,6 +80,7 @@ const StarshipsWrapper = () => {
                     <thead>
                       <tr>
                         <th>Starships</th>
+                        <th>Views</th>
                       </tr>
                     </thead>
                     <tbody>
