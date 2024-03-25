@@ -4,5 +4,6 @@ export interface DataStarships {
   }
 
   export interface Starship {
-    name: string
+    name: string,
+    url: string
   }

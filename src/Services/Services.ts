@@ -99,6 +99,25 @@ export async function fetchDataStarships(page: number = 1): Promise<any> {
     }
   }
 
+  //Specific STARSHIP
+  const apiUrlStarship = "https://swapi.dev/api/starships";
+
+export async function fetchDataStarship(id: number): Promise<any> {
+    try {
+      const response = await fetch(apiUrlStarship + '/' + id);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
 
 
 
