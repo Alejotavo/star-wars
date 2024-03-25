@@ -8,6 +8,7 @@ import { Table } from "react-bootstrap";
 import Pagination from "../Pagination/Pagination";
 import Search from "../Search/Search";
 import OffCanvas from "../Off-canvas/Off-canvas";
+import StarshipDetails from "./Starship-details";
 
 const StarshipsWrapper = () => {
   const [data, setData] = useState<DataStarships>();
@@ -109,6 +110,12 @@ const StarshipsWrapper = () => {
                     }}
                     show={show}
                     title={starshipData?.name}
+                    body={
+                      <StarshipDetails
+                        title={starshipData?.name}
+                        description={starshipData?.manufacturer}
+                      />
+                    }
                   />
                 </>
               ) : (
