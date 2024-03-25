@@ -180,6 +180,26 @@ export async function fetchDataSpecies(page: number = 1): Promise<any> {
     }
 }
 
+
+//List specific SPECIE
+const apiUrlSpecie = "https://swapi.dev/api/species";
+
+export async function fetchDataSpecie(id: number): Promise<any> {
+    try {
+      const response = await fetch(apiUrlSpecie  + '/' + id);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+}
+
 //List of All PLANETS
 const apiUrlPlanets = "https://swapi.dev/api/planets";
 

@@ -5,4 +5,6 @@ export interface DataSpecies {
 
   export interface Specie {
     name: string,
+    url:string,
+    classification: string
   }
