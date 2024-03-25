@@ -79,6 +79,7 @@ const StarshipsWrapper = () => {
                     <thead>
                       <tr>
                         <th>Planets</th>
+                        <th>Views</th>
                       </tr>
                     </thead>
                     <tbody>
