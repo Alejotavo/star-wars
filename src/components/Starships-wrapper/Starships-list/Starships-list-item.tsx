@@ -8,7 +8,7 @@ interface StarshipListItemProps {
 }
 
 const StarshipListItem = (props: StarshipListItemProps) => {
-  const getIdFromFilmUrl = (url: string) => {
+  const getIdFromStarshipUrl = (url: string) => {
     let splitted = url.split("/");
     console.log("entra el click", parseInt(splitted[splitted.length - 2]));
     return parseInt(splitted[splitted.length - 2]);
@@ -38,7 +38,7 @@ const StarshipListItem = (props: StarshipListItemProps) => {
           <Button
             variant="link"
             onClick={() => {
-              props.setCurrentId(getIdFromFilmUrl(props.starship.url));
+              props.setCurrentId(getIdFromStarshipUrl(props.starship.url));
               props.setShow(true);
               handleItemClick(props.starship.url);
             }}

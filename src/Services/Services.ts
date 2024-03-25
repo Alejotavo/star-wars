@@ -218,3 +218,22 @@ export async function fetchDataPlanets(page: number = 1): Promise<any> {
       throw error;
     }
 }
+
+//List specific PLANET
+const apiUrlPlanet = "https://swapi.dev/api/planets";
+
+export async function fetchDataPlanet(id: number): Promise<any> {
+    try {
+      const response = await fetch(apiUrlPlanet  + '/' + id);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+}

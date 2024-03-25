@@ -8,7 +8,7 @@ interface SpecieListItemProps {
 }
 
 const SpecieListItem = (props: SpecieListItemProps) => {
-  const getIdFromFilmUrl = (url: string) => {
+  const getIdFromSpecieUrl = (url: string) => {
     let splitted = url.split("/");
     console.log("entra el click", parseInt(splitted[splitted.length - 2]));
     return parseInt(splitted[splitted.length - 2]);
@@ -37,7 +37,7 @@ const SpecieListItem = (props: SpecieListItemProps) => {
           <Button
             variant="link"
             onClick={() => {
-              props.setCurrentId(getIdFromFilmUrl(props.specie.url));
+              props.setCurrentId(getIdFromSpecieUrl(props.specie.url));
               props.setShow(true);
               handleItemClick(props.specie.url);
             }}

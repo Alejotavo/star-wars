@@ -8,7 +8,7 @@ interface VehicleListItemProps {
 }
 
 const VehicleListItem = (props: VehicleListItemProps) => {
-  const getIdFromFilmUrl = (url: string) => {
+  const getIdFromVehicleUrl = (url: string) => {
     let splitted = url.split("/");
     console.log("entra el click", parseInt(splitted[splitted.length - 2]));
     return parseInt(splitted[splitted.length - 2]);
@@ -38,7 +38,7 @@ const VehicleListItem = (props: VehicleListItemProps) => {
           <Button
             variant="link"
             onClick={() => {
-              props.setCurrentId(getIdFromFilmUrl(props.vehicle.url));
+              props.setCurrentId(getIdFromVehicleUrl(props.vehicle.url));
               props.setShow(true);
               handleItemClick(props.vehicle.url);
             }}
