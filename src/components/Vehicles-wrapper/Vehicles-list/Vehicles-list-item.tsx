@@ -1,3 +1,4 @@
+import { Button } from "react-bootstrap";
 import { Vehicle } from "../../../Models/vehicles";
 
 interface VehicleListItemProps {
@@ -9,7 +10,9 @@ const StarshipListItem = (props: VehicleListItemProps) => {
     <>
       <tr>
         <td>
-          <label>{props.vehicle.name}</label>
+          <Button variant="link">
+            <label>{props.vehicle.name}</label>
+          </Button>
         </td>
       </tr>
     </>
