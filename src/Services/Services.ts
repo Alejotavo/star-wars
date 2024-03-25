@@ -140,6 +140,27 @@ export async function fetchDataVehicles(page: number = 1): Promise<any> {
     }
 }
 
+  //Specific VEHICLE
+  const apiUrlVehicle = "https://swapi.dev/api/vehicles";
+
+export async function fetchDataVehicle(id: number): Promise<any> {
+    try {
+      const response = await fetch(apiUrlVehicle + '/' + id);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
+
+
 //List of All SPECIES
 const apiUrlSpecies = "https://swapi.dev/api/species";
 

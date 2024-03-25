@@ -5,5 +5,6 @@ export interface DataVehicles {
 
   export interface Vehicle {
     name: string,
-    url:string
+    url:string,
+    manufacturer: string
   }

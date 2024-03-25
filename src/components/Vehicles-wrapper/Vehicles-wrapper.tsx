@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import VehicleListItem from "./Vehicles-list/Vehicles-list-item";
-import { fetchDataVehicles } from "../../Services/Services";
+import { fetchDataVehicle, fetchDataVehicles } from "../../Services/Services";
 import { DataVehicles, Vehicle } from "../../Models/vehicles";
 import Spinner from "../Spinner/Spinner";
 import Alert from "../Alert/alert";
 import { Table } from "react-bootstrap";
 import Pagination from "../Pagination/Pagination";
 import Search from "../Search/Search";
+import OffCanvas from "../Off-canvas/Off-canvas";
 
 const StarshipsWrapper = () => {
   const [data, setData] = useState<DataVehicles>();
@@ -15,6 +16,9 @@ const StarshipsWrapper = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchFilter, setSearchFilter] = useState("");
   const [filteredData, setFilteredData] = useState<Vehicle[]>([]);
+  const [currentId, setCurrentId] = useState<number | null>(null);
+  const [vehicleData, setVehicleData] = useState<Vehicle>();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
@@ -29,6 +33,23 @@ const StarshipsWrapper = () => {
         console.error("Error fetching data:", error);
       });
   }, [currentPage]);
+
+  useEffect(() => {
+    if (currentId) {
+      setIsLoading(true);
+      fetchDataVehicle(currentId)
+        .then((response: Vehicle) => {
+          console.log("Fetched data:", response);
+          setVehicleData(response);
+          setIsLoading(false);
+          setShow(true);
+        })
+        .catch((error) => {
+          setError(error);
+          console.error("Error fetching data:", error);
+        });
+    }
+  }, [currentId]);
 
   console.log("lista de Vehicles", data?.results);
 
@@ -63,7 +84,14 @@ const StarshipsWrapper = () => {
                     <tbody>
                       {filteredData &&
                         filteredData.map((item: any, index: number) => (
-                          <VehicleListItem vehicle={item} key={index} />
+                          <VehicleListItem
+                            vehicle={item}
+                            key={index}
+                            setCurrentId={(id: number | null) =>
+                              setCurrentId(id)
+                            }
+                            setShow={(show: boolean) => setShow(show)}
+                          />
                         ))}
                     </tbody>
                   </Table>
@@ -74,6 +102,14 @@ const StarshipsWrapper = () => {
                     onPageChange={(pageNumber) => {
                       setCurrentPage(pageNumber);
                     }}
+                  />
+                  <OffCanvas
+                    onClose={() => {
+                      setShow(false);
+                    }}
+                    show={show}
+                    title={vehicleData?.name}
+                    body={vehicleData?.manufacturer}
                   />
                 </>
               ) : (
