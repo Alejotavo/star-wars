@@ -6,5 +6,6 @@ export interface DataPlanets {
   export interface Planet {
     name: string,
     url:string,
-    climate: string
+    climate: string,
+    diameter:string
   }
