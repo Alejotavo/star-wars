@@ -6,6 +6,8 @@ interface CharacterModalProps {
   name: string;
   eyes: string;
   gender: string;
+  hair_color: string;
+  birth_year: string;
 }
 
 const CharacterModal: React.FC<CharacterModalProps> = ({
@@ -14,6 +16,8 @@ const CharacterModal: React.FC<CharacterModalProps> = ({
   name,
   eyes,
   gender,
+  hair_color,
+  birth_year,
 }) => {
   return (
     <Modal show={show} onHide={handleClose}>
@@ -28,6 +32,14 @@ const CharacterModal: React.FC<CharacterModalProps> = ({
         <div>
           <label>Gender:</label>
           <p>{gender}</p>
+        </div>
+        <div>
+          <label>Gender:</label>
+          <p>{hair_color}</p>
+        </div>
+        <div>
+          <label>Gender:</label>
+          <p>{birth_year}</p>
         </div>
       </Modal.Body>
       <Modal.Footer>

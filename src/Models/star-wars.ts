@@ -8,7 +8,9 @@ export interface Data {
     gender: string,
     eye_color: string,
     films: string[],
-    url: string
+    url: string,
+    birth_year: string,
+    hair_color:string
   }
   
 

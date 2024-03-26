@@ -47,6 +47,8 @@ const CharacterDetails = () => {
         eyes={dataCharacter?.eye_color ?? "Unknown"}
         gender={dataCharacter?.gender ?? "Unknown"}
         name={dataCharacter?.name ?? "Unknow"}
+        birth_year={dataCharacter?.birth_year ?? "Unknow"}
+        hair_color={dataCharacter?.hair_color ?? "Unknow"}
         show={showModal}
         handleClose={handleModalClose}
       />
