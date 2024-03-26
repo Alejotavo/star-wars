@@ -10,17 +10,23 @@ interface PlanetDetailsComponent {
 const PlanetDetails = (props: PlanetDetailsComponent) => {
   return (
     <div>
-      <h6>Title:</h6>
-      <Badge pill bg="info">
-        {props.name}
-      </Badge>
       <div>
-        <h6>Climate:</h6>
-        <p className="mt-3">{props.climate}</p>
+        <span>Title:</span>
+        <Badge pill bg="info" style={{ marginLeft: "0.7rem" }}>
+          {props.name}
+        </Badge>
       </div>
-      <div>
-        <h6>Diameter:</h6>
-        <p className="mt-3">{props.diameter}</p>
+      <div className="mt-3">
+        <span>Climate:</span>
+        <label style={{ marginLeft: "0.7rem", color: "#a8a8a8" }}>
+          {props.climate}
+        </label>
+      </div>
+      <div className="mt-3">
+        <span>Diameter:</span>
+        <label style={{ marginLeft: "0.7rem", color: "#a8a8a8" }}>
+          {props.diameter}
+        </label>
       </div>
     </div>
   );
