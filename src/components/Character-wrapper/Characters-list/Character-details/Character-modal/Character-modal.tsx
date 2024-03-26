@@ -1,4 +1,4 @@
-import { Button, Modal } from "react-bootstrap";
+import { Badge, Button, Modal } from "react-bootstrap";
 
 interface CharacterModalProps {
   show: boolean;
@@ -27,19 +27,19 @@ const CharacterModal: React.FC<CharacterModalProps> = ({
       <Modal.Body>
         <div>
           <label>Eyes color:</label>
-          <p>{eyes}</p>
+          <Badge>{eyes}</Badge>
         </div>
         <div>
           <label>Gender:</label>
-          <p>{gender}</p>
+          <Badge>{gender}</Badge>
         </div>
         <div>
-          <label>Gender:</label>
-          <p>{hair_color}</p>
+          <label>Hair Color:</label>
+          <Badge>{hair_color}</Badge>
         </div>
         <div>
-          <label>Gender:</label>
-          <p>{birth_year}</p>
+          <label>Birth:</label>
+          <Badge>{birth_year}</Badge>
         </div>
       </Modal.Body>
       <Modal.Footer>
