@@ -80,6 +80,25 @@ export async function fetchDataFilm(id: number): Promise<any> {
     }
   }
 
+ //Specific list of FILMS from specific CHARACTER
+const apiUrlFilmsFromSpecificCharacter = "https://swapi.py4e.com/api/films";
+
+export async function fetchDataFilmFromSpecificCharacter(id: number): Promise<any> {
+    try {
+      const response = await fetch(apiUrlFilmsFromSpecificCharacter + '/' + id);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+  
+      const data = response.json();
+      return data;
+    } catch (error) {
+      console.error('Error fetching data:', error);
+      throw error;
+    }
+  }
+
     //List of All STARSHIPS
 const apiUrlStarships = "https://swapi.dev/api/starships";
 

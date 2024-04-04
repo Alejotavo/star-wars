@@ -1,5 +1,9 @@
 import { useParams } from "react-router";
-import { fetchDataCharacter } from "../../../../Services/Services";
+import {
+  fetchDataCharacter,
+  fetchDataFilmFromSpecificCharacter,
+  fetchDataFilms,
+} from "../../../../Services/Services";
 import { useEffect, useState } from "react";
 import { Character } from "../../../../Models/star-wars";
 import Spinner from "../../../Spinner/Spinner";
@@ -13,6 +17,14 @@ const CharacterDetails = () => {
 
   const [dataCharacter, setDataCharacter] = useState<Character>();
   const [isLoading, setIsLoading] = useState(false);
+  const [films, setFilms] = useState<Film[]>([]);
+
+  interface Film {
+    title: string;
+    director: string;
+    release_date: string;
+    url: string;
+  }
 
   useEffect(() => {
     setIsLoading(true);
@@ -26,8 +38,26 @@ const CharacterDetails = () => {
       });
   }, []);
 
-  const [showModal, setShowModal] = useState(false);
+  useEffect(() => {
+    const urls = dataCharacter?.films;
 
+    if (!urls) {
+      console.error("URLs are undefined");
+      return;
+    }
+
+    Promise.all(urls.map((url) => fetch(url)))
+      .then((responses) =>
+        Promise.all(responses.map((response) => response.json()))
+      )
+      .then((data) => setFilms(data))
+      .catch((error) => console.error("Error fetching films:", error));
+  }, [dataCharacter]);
+
+  console.log("films", films);
+  console.log("Data off FILMS from this character:", dataCharacter?.films);
+
+  const [showModal, setShowModal] = useState(false);
   const handleModalOpen = () => setShowModal(true);
   const handleModalClose = () => setShowModal(false);
 
@@ -36,8 +66,8 @@ const CharacterDetails = () => {
       {isLoading && <Spinner />}
       <h1>{dataCharacter?.name}</h1>
       <label>Films:</label>
-      {dataCharacter?.films?.map((film, index: number) => {
-        return <div key={index}>{film}</div>;
+      {films?.map((film, index: number) => {
+        return <div key={index}>{film.title}</div>;
       })}
       <Link to={"/"}>back</Link>
       <Button variant="primary" onClick={handleModalOpen}>
