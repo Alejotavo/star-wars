@@ -114,7 +114,8 @@ const StarshipsWrapper = () => {
                     body={
                       <StarshipDetails
                         title={starshipData?.name}
-                        description={starshipData?.manufacturer}
+                        manufacturer={starshipData?.manufacturer}
+                        speed={starshipData?.max_atmosphering_speed}
                       />
                     }
                   />

@@ -5,6 +5,7 @@ export interface DataStarships {
 
   export interface Starship {
     name: string,
-    url: string
-    manufacturer: string
+    url: string,
+    manufacturer: string,
+    max_atmosphering_speed: string
   }

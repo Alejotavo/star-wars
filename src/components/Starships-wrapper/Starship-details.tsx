@@ -2,7 +2,8 @@ import Badge from "react-bootstrap/Badge";
 
 interface StartshipDetailsComponent {
   title?: string;
-  description?: any;
+  manufacturer?: string;
+  speed?: string;
 }
 
 const StarshipDetails = (props: StartshipDetailsComponent) => {
@@ -11,7 +12,24 @@ const StarshipDetails = (props: StartshipDetailsComponent) => {
       <Badge pill bg="info">
         {props.title}
       </Badge>
-      <p className="mt-3">{props.description}</p>
+      <div className="mt-3">
+        <span>Manufacturer:</span>
+        <label style={{ marginLeft: "0.7rem", color: "#a8a8a8" }}>
+          {props.manufacturer}
+        </label>
+      </div>
+      <div className="mt-3">
+        <span>Speed:</span>
+        {props.speed !== "n/a" ? (
+          <label style={{ marginLeft: "0.7rem", color: "#a8a8a8" }}>
+            {props.speed}
+          </label>
+        ) : (
+          <Badge pill bg="danger">
+            {props.speed}
+          </Badge>
+        )}
+      </div>
     </div>
   );
 };
