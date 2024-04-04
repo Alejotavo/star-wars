@@ -81,8 +81,8 @@ const CharacterDetails = () => {
         <tbody>
           {films?.map((film, index: number) => {
             return (
-              <tr>
-                <td key={index}>{film.title}</td>
+              <tr key={index}>
+                <td>{film.title}</td>
                 <td>{film.director}</td>
                 <td>{film.release_date}</td>
               </tr>
