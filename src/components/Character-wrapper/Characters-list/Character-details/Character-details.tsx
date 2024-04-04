@@ -9,7 +9,7 @@ import { Character } from "../../../../Models/star-wars";
 import Spinner from "../../../Spinner/Spinner";
 import { Link } from "react-router-dom";
 import CharacterModal from "./Character-modal/Character-modal";
-import { Button } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 
 const CharacterDetails = () => {
   const params = useParams<{ id: string }>();
@@ -65,14 +65,32 @@ const CharacterDetails = () => {
     <>
       {isLoading && <Spinner />}
       <h1>{dataCharacter?.name}</h1>
-      <label>Films:</label>
-      {films?.map((film, index: number) => {
-        return <div key={index}>{film.title}</div>;
-      })}
+      <div>
+        <Button variant="primary" onClick={handleModalOpen}>
+          Character details
+        </Button>
+      </div>
+      <Table striped size="sm">
+        <thead>
+          <tr>
+            <th>Film</th>
+            <th>Director</th>
+            <th>Release Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {films?.map((film, index: number) => {
+            return (
+              <tr>
+                <td key={index}>{film.title}</td>
+                <td>{film.director}</td>
+                <td>{film.release_date}</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </Table>
       <Link to={"/"}>back</Link>
-      <Button variant="primary" onClick={handleModalOpen}>
-        Character details
-      </Button>
       <CharacterModal
         eyes={dataCharacter?.eye_color ?? "Unknown"}
         gender={dataCharacter?.gender ?? "Unknown"}
