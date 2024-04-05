@@ -1,9 +1,5 @@
 import { useParams } from "react-router";
-import {
-  fetchDataCharacter,
-  fetchDataFilmFromSpecificCharacter,
-  fetchDataFilms,
-} from "../../../../Services/Services";
+import { fetchDataCharacter } from "../../../../Services/Services";
 import { useEffect, useState } from "react";
 import { Character } from "../../../../Models/star-wars";
 import Spinner from "../../../Spinner/Spinner";
